@@ -3,6 +3,12 @@
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
     <template id="report_saleorder_document_hide_detail" inherit_id="sale.report_saleorder_document">
+		<xpath expr="//tbody[hasclass('sale_tbody')]//t[@t-if='not line.display_type']/td[3]/span" position="attributes">
+			<attribute name="t-if" add="(current_section and current_section.show_price)" separator=" "/>
+		</xpath>
+		<xpath expr="//tbody[hasclass('sale_tbody')]//t[@t-if='not line.display_type']/td[hasclass('o_price_total')]/span" position="attributes">
+			<attribute name="t-if" add="(current_section and current_section.show_price)" separator=" "/>
+		</xpath>
 		<xpath expr="//tbody[hasclass('sale_tbody')]//t[@t-if='not line.display_type']" position="attributes">
 			<attribute name="t-if" add="(not current_section or current_section.show_details)" separator=" and "/>
 		</xpath>
